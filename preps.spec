@@ -38,8 +38,8 @@ things that need fixing around the house. Be creative.
 %description -l pl
 PRepS s³u¿y do kontroli i zarz±dzania b³êdami. PRepS zosta³
 zaprojektowany do ma³ych i ¶rednich projektów. Mimo to jest na tyle
-elestyczny, ¿e mo¿e byæ u¿ywany przy innych rodzajach problemów
-wymagaj±cych kontroli postepu prac. Mo¿e byæ na przyk³ad u¿yty w domu
+elastyczny, ¿e mo¿e byæ u¿ywany przy innych rodzajach problemów
+wymagaj±cych kontroli postêpu prac. Mo¿e byæ na przyk³ad u¿yty w domu
 do nadzoru rzeczy wymagaj±cych naprawy.
 
 %prep
