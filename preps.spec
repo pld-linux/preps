@@ -43,17 +43,19 @@ make
 rm -rf $RPM_BUILD_ROOT
 make DESTDIR=$RPM_BUILD_ROOT install
 
-gzip -9nf AUTHORS ChangeLog COPYING INSTALL NEWS README TODO \
-	doc/*html $RPM_BUILD_ROOT/%{_mandir}/man1/*
+gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO \
+	$RPM_BUILD_ROOT/%{_mandir}/man1/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {AUTHORS,ChangeLog,COPYING,INSTALL,NEWS,README,TODO}.gz
-%doc doc/*.html.gz
+%doc %{_datadir}/%{name}/doc/*
+%doc {AUTHORS,ChangeLog,INSTALL,NEWS,README,TODO}.gz
+%{_datadir}/%{name}/*.sql
+%{_datadir}/%{name}/*.xpm
+%{_datadir}/%{name}/*.msg
 %{_mandir}/man1/*.gz
-%{_datadir}/%{name}
 %attr(755,root,root) %{_libdir}/*
 %attr(755,root,root) %{_bindir}/*
