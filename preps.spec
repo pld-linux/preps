@@ -2,7 +2,7 @@ Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.8.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Development/Tools
 Source0:	http://webpages.charter.net/stuffle/linux/%{name}/%{name}-%{version}.tar.gz
