@@ -1,7 +1,7 @@
 Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
-Version:	1.4.0
+Version:	1.4.1beta
 Release:	1
 Copyright:	Artistic
 Group:		Development/Tools
@@ -31,7 +31,7 @@ wymagaj±cych kontroli postepu prac. Mo¿e byæ na przyk³ad u¿yty w domu
 do nadzoru rzeczy wymagaj±cych naprawy.
 
 %prep
-%setup -q
+%setup -q -n %{name}-1.4.1
 %patch1 -p1
 %patch2 -p1
 
@@ -51,9 +51,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %{_datadir}/%{name}/doc/*
+%doc doc/*.html
+%doc doc/libpreps
 %doc {AUTHORS,ChangeLog,INSTALL,NEWS,README,TODO}.gz
 %attr(755,root,root) %{_libdir}/*
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
+%{_datadir}/%{name}/*.sql
+%{_datadir}/%{name}/*.xpm
+%{_datadir}/%{name}/*.msg
 %{_mandir}/man1/*
