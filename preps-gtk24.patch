@@ -1,0 +1,13 @@
+--- preps-1.9.6/configure.ac.orig	2004-04-06 22:11:31.000000000 +0200
++++ preps-1.9.6/configure.ac	2004-04-06 22:12:41.419063871 +0200
+@@ -31,10 +31,6 @@
+                    [Disable the use of deprecated glib constructs.])
+ AC_DEFINE_UNQUOTED(GDK_DISABLE_DEPRECATED, 1, 
+                    [Disable the use of deprecated GDK constructs.])
+-AC_DEFINE_UNQUOTED(GTK_DISABLE_DEPRECATED, 1, 
+-                   [Disable the use of deprecated GTK constructs.])
+-AC_DEFINE_UNQUOTED(GNOME_DISABLE_DEPRECATED, 1, 
+-                   [Disable the use of deprecated Gnome constructs.])
+ 
+ #
+ # Define some extra arguments...
