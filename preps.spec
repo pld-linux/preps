@@ -6,6 +6,7 @@ Release:	4
 License:	GPL
 Group:		X11/Development/Tools
 Source0:	http://webpages.charter.net/stuffle/linux/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	5ca057d4c3d0b7e4915dcd1b36148202
 Patch0:		%{name}-nostatic.patch
 Patch1:		%{name}-with_shared_libpq.patch
 Patch2:		%{name}-DESTDIR.patch
