@@ -14,6 +14,8 @@ BuildRequires:	postgresql-static >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
 Requires:	gtk+ >= 1.2
 Requires:	postgresql >= 6.5
+Requires:	tetex
+Requires:	dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
