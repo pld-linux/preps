@@ -6,4 +6,5 @@ Exec=preps
 Icon=/usr/share/preps/LadyBug.xpm
 Terminal=0
 Type=Applications
+Encoding=UTF-8
 # vi: encoding=utf-8
