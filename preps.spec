@@ -1,37 +1,33 @@
 Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
-Version:	1.6.3
-# devel
-# Version:	1.7.4
+Version:	1.8.0
 Release:	1
 License:	GPL
-Group:		Development/Tools
-Group(de):	Entwicklung/Werkzeuge
-Group(fr):	Development/Outils
-Group(pl):	Programowanie/Narzêdzia
+Group:		X11/Development/Tools
+Group(de):	X11/Entwicklung/Werkzeuge
+Group(es):	X11/Desarrollo/Herramientas
+Group(fr):	X11/Development/Outils
+Group(pl):	X11/Programowanie/Narzêdzia
+Group(pt):	X11/Desenvolvimento/Ferramentas
 Source0:	http://webpages.charter.net/stuffle/linux/%{name}/%{name}-%{version}.tar.gz
-Patch0:		%{name}-postgresql_include_path.patch
-Patch1:		%{name}-nostatic.patch
-# Patch0:	%{name}-login_pwd_entry.patch
-# Patch1:	%{name}-responsible_on_list.patch
-Patch2:		%{name}-with_shared_libpq.patch
-Patch3:		%{name}-DESTDIR.patch
-# Patch3:	%{name}-macros.patch
+Patch0:		%{name}-nostatic.patch
+Patch1:		%{name}-with_shared_libpq.patch
+Patch2:		%{name}-DESTDIR.patch
 URL:		http://webpages.charter.net/stuffle/linux/preps/preps.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	postgresql-devel >= 6.5
-BuildRequires:	gtk+-devel >= 1.2
-BuildRequires:	tetex
-BuildRequires:	tetex-dvips
-BuildRequires:	glib-devel
 BuildRequires:	gnome-libs-devel
-BuildRequires:	libpreps-devel
+BuildRequires:	libpreps-devel >= 1.6.5
+BuildRequires:	libtool
+BuildRequires:	postgresql-devel >= 6.5
 Requires:	postgresql-module-plpgsql
 Requires:	tetex
 Requires:	tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 PRepS is a simple Problem Reporting System. PRepS is designed around
@@ -52,12 +48,13 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
-aclocal -I macros
-autoconf
 rm -f missing
+libtoolize --copy --force
+gettextize --copy --force
+aclocal -I %{_aclocaldir}/gnome
+autoconf
 automake -a -c
 %configure
 %{__make} 
@@ -65,19 +62,20 @@ automake -a -c
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	Applicationsdir=%{_applnkdir}/Development
 
 gzip -9nf AUTHORS ChangeLog COPYING INSTALL NEWS README TODO
-rm -f doc/C/images/Makefile*
+
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc *.gz 
-%doc doc/C/preps-manual
-%doc doc/C/images
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/preps/*.xpm
+%{_datadir}/preps
 %{_mandir}/man1/*
