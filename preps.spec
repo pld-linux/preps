@@ -2,7 +2,7 @@ Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.4.5
-Release:	1
+Release:	2
 License:	Artistic
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
@@ -12,7 +12,9 @@ Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
 Patch0:		%{name}-login_pwd_entry.patch
 Patch1:		%{name}-responsible_on_list.patch
 Patch2:		%{name}-with_shared_libpq.patch
-Patch3:		preps-macros.patch
+Patch3:		%{name}-macros.patch
+Patch4:		%{name}-shell.patch
+Patch5:		%{name}-plpgsql.patch
 BuildRequires:	postgresql-devel >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
 BuildRequires:  tetex
@@ -20,6 +22,7 @@ BuildRequires:  tetex-dvips
 BuildRequires:  glib-devel
 BuildRequires:  gtk+-devel
 BuildRequires:  XFree86-devel
+Requires:       postgresql-module-plpgsql
 Requires:       tetex
 Requires:       tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -44,11 +47,13 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 aclocal -I macros
 autoconf
-%configure
+%configure --with-pgsqldir=%{_libdir}/modules
 %{__make} 
 
 %install
