@@ -1,9 +1,9 @@
-diff -ru preps-1.2.4.orig/preps/mainwin.c preps-1.2.4/preps/mainwin.c
---- preps-1.2.4.orig/preps/mainwin.c	Tue Mar  7 01:22:43 2000
-+++ preps-1.2.4/preps/mainwin.c	Sat May  6 20:39:07 2000
-@@ -110,13 +110,14 @@
- /*
-  * PR info display data
+diff -Naur preps-1.4.5/preps/mainwin.c preps-1.4.5-p/preps/mainwin.c
+--- preps-1.4.5/preps/mainwin.c	Fri Sep  1 20:54:05 2000
++++ preps-1.4.5-p/preps/mainwin.c	Fri Oct 20 17:34:03 2000
+@@ -129,13 +129,14 @@
+  *    (COL_NUM + 1) : order by that column
+  *   -(COL_NUM + 1) : order by that column in descending order
   */
 -#define NUM_PR_FIELDS_DSP          6
 +#define NUM_PR_FIELDS_DSP          7
@@ -16,20 +16,20 @@ diff -ru preps-1.2.4.orig/preps/mainwin.c preps-1.2.4/preps/mainwin.c
 +#define PR_RESPONSIBLE_ID_DSP_POS  5
 +#define PR_TITLE_DSP_POS           6
  
- 
  /*
-@@ -297,6 +298,10 @@
-                (strlen (PQgetvalue (res, i, PR_NUMBER_POS)) + 1);
-             strcpy (list_buf [PR_NUM_DSP_POS],
-                     PQgetvalue (res, i, PR_NUMBER_POS));
-+            list_buf [PR_RESPONSIBLE_ID_DSP_POS] = (gchar *)g_malloc
-+               (strlen (PQgetvalue (res, i, PR_RESPONSIBLE_POS)) + 1);
-+            strcpy (list_buf [PR_RESPONSIBLE_ID_DSP_POS],
-+                    PQgetvalue (res, i, PR_RESPONSIBLE_POS));
- 
-             /*
-              * Append the data to the list, and clean up the
-@@ -1080,6 +1085,7 @@
+  *  The user can exit several ways.  This function centralizes the
+@@ -357,6 +358,10 @@
+             (strlen (PQgetvalue (res, i, PROJECT_NAME_POS)) + 1);
+          strcpy (list_buf [PROJECT_NAME_DSP_POS],
+                  PQgetvalue (res, i, PROJECT_NAME_POS));
++         list_buf [PR_RESPONSIBLE_ID_DSP_POS] = (gchar *)g_malloc
++            (strlen (PQgetbalue (res, i, PR_RESPONSIBLE_POS)) + 1);
++	 strcpy (list_buf [PR_RESPONSIBLE_ID_DSP_POS],
++                 PQgetvalue (res, i, PR_RESPONSIBLE_POS));
+          list_buf [STATUS_NAME_DSP_POS] = (gchar *)g_malloc
+             (strlen (PQgetvalue (res, i, STATUS_NAME_POS)) + 1);
+          strcpy (list_buf [STATUS_NAME_DSP_POS],
+@@ -1220,6 +1225,7 @@
    GtkWidget        *type_lbl;
    GtkWidget        *severity_lbl;
    GtkWidget        *title_lbl;
@@ -37,7 +37,7 @@ diff -ru preps-1.2.4.orig/preps/mainwin.c preps-1.2.4/preps/mainwin.c
    GtkWidget        *new_pr_button;
    GtkWidget        *mod_pr_button;
    GtkWidget        *find_pr_button;
-@@ -1553,6 +1559,8 @@
+@@ -1692,6 +1698,8 @@
    gtk_clist_set_column_width (GTK_CLIST (results_clist), 
                                SEVERITY_NAME_DSP_POS, 80);
    gtk_clist_set_column_width (GTK_CLIST (results_clist), 
@@ -46,7 +46,7 @@ diff -ru preps-1.2.4.orig/preps/mainwin.c preps-1.2.4/preps/mainwin.c
                                PR_TITLE_DSP_POS, 80);
    gtk_clist_column_titles_show (GTK_CLIST (results_clist));
    gtk_signal_connect (GTK_OBJECT (results_clist), "select_row",
-@@ -1588,6 +1596,11 @@
+@@ -1730,6 +1738,11 @@
    gtk_widget_show (title_lbl);
    gtk_clist_set_column_widget (GTK_CLIST (results_clist), 
                                 PR_TITLE_DSP_POS, title_lbl);
@@ -58,10 +58,10 @@ diff -ru preps-1.2.4.orig/preps/mainwin.c preps-1.2.4/preps/mainwin.c
  
    statusbar = gtk_statusbar_new ();
    gtk_object_set_data (GTK_OBJECT (main_win), STATUSBAR, statusbar);
-diff -ru preps-1.2.4.orig/preps/pr_query.c preps-1.2.4/preps/pr_query.c
---- preps-1.2.4.orig/preps/pr_query.c	Mon Nov  8 00:43:51 1999
-+++ preps-1.2.4/preps/pr_query.c	Sat May  6 20:19:18 2000
-@@ -27,7 +27,7 @@
+diff -Naur preps-1.4.5/preps/pr_query.c preps-1.4.5-p/preps/pr_query.c
+--- preps-1.4.5/preps/pr_query.c	Mon Aug  7 00:19:02 2000
++++ preps-1.4.5-p/preps/pr_query.c	Fri Oct 20 17:31:05 2000
+@@ -32,7 +32,7 @@
  #define BASIC_SELECT "\
  SELECT prj.name, stat.name, pt.name, sevr.name, \
         pr.title, stat.order_num, sevr.order_num, \
@@ -70,14 +70,14 @@ diff -ru preps-1.2.4.orig/preps/pr_query.c preps-1.2.4/preps/pr_query.c
    FROM project prj, status stat, problem_type pt, \
         severity sevr, problem_report pr \
   WHERE prj.project_num = pr.project_num \
-diff -ru preps-1.2.4.orig/preps/pr_query.h preps-1.2.4/preps/pr_query.h
---- preps-1.2.4.orig/preps/pr_query.h	Fri Sep  3 14:13:29 1999
-+++ preps-1.2.4/preps/pr_query.h	Sat May  6 20:23:45 2000
-@@ -35,6 +35,7 @@
+diff -Naur preps-1.4.5/preps/pr_query.h preps-1.4.5-p/preps/pr_query.h
+--- preps-1.4.5/preps/pr_query.h	Sat Jun  3 15:07:39 2000
++++ preps-1.4.5-p/preps/pr_query.h	Fri Oct 20 17:31:05 2000
+@@ -124,6 +124,7 @@
  #define STATUS_ORDER_POS        5
  #define SEVERITY_ORDER_POS      6
  #define PR_NUMBER_POS           7
 +#define PR_RESPONSIBLE_POS      8
  
- /*
-  *  pr_query_struct
+ __BEGIN_DECLS
+ /*! \typedef pr_query_struct
