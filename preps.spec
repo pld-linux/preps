@@ -52,7 +52,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/*.html
-%doc doc/libpreps
 %doc {AUTHORS,ChangeLog,INSTALL,NEWS,README,TODO}.gz
 %attr(755,root,root) %{_libdir}/*
 %attr(755,root,root) %{_bindir}/*
