@@ -1,6 +1,6 @@
-diff -ru preps-1.2.4.orig/src/mainwin.c preps-1.2.4/src/mainwin.c
---- preps-1.2.4.orig/src/mainwin.c	Tue Mar  7 01:22:43 2000
-+++ preps-1.2.4/src/mainwin.c	Sat May  6 20:39:07 2000
+diff -ru preps-1.2.4.orig/preps/mainwin.c preps-1.2.4/preps/mainwin.c
+--- preps-1.2.4.orig/preps/mainwin.c	Tue Mar  7 01:22:43 2000
++++ preps-1.2.4/preps/mainwin.c	Sat May  6 20:39:07 2000
 @@ -110,13 +110,14 @@
  /*
   * PR info display data
@@ -58,9 +58,9 @@ diff -ru preps-1.2.4.orig/src/mainwin.c preps-1.2.4/src/mainwin.c
  
    statusbar = gtk_statusbar_new ();
    gtk_object_set_data (GTK_OBJECT (main_win), STATUSBAR, statusbar);
-diff -ru preps-1.2.4.orig/src/pr_query.c preps-1.2.4/src/pr_query.c
---- preps-1.2.4.orig/src/pr_query.c	Mon Nov  8 00:43:51 1999
-+++ preps-1.2.4/src/pr_query.c	Sat May  6 20:19:18 2000
+diff -ru preps-1.2.4.orig/preps/pr_query.c preps-1.2.4/preps/pr_query.c
+--- preps-1.2.4.orig/preps/pr_query.c	Mon Nov  8 00:43:51 1999
++++ preps-1.2.4/preps/pr_query.c	Sat May  6 20:19:18 2000
 @@ -27,7 +27,7 @@
  #define BASIC_SELECT "\
  SELECT prj.name, stat.name, pt.name, sevr.name, \
@@ -70,9 +70,9 @@ diff -ru preps-1.2.4.orig/src/pr_query.c preps-1.2.4/src/pr_query.c
    FROM project prj, status stat, problem_type pt, \
         severity sevr, problem_report pr \
   WHERE prj.project_num = pr.project_num \
-diff -ru preps-1.2.4.orig/src/pr_query.h preps-1.2.4/src/pr_query.h
---- preps-1.2.4.orig/src/pr_query.h	Fri Sep  3 14:13:29 1999
-+++ preps-1.2.4/src/pr_query.h	Sat May  6 20:23:45 2000
+diff -ru preps-1.2.4.orig/preps/pr_query.h preps-1.2.4/preps/pr_query.h
+--- preps-1.2.4.orig/preps/pr_query.h	Fri Sep  3 14:13:29 1999
++++ preps-1.2.4/preps/pr_query.h	Sat May  6 20:23:45 2000
 @@ -35,6 +35,7 @@
  #define STATUS_ORDER_POS        5
  #define SEVERITY_ORDER_POS      6
