@@ -1,0 +1,25 @@
+diff -Nru preps-1.4.5/configure.in preps-1.4.5.new/configure.in
+--- preps-1.4.5/configure.in	Mon Aug  7 13:58:38 2000
++++ preps-1.4.5.new/configure.in	Mon Nov  6 03:06:12 2000
+@@ -72,20 +72,9 @@
+ fi                                                                              
+ PG_CFLAGS="-I$pgsql_incdir"
+ 
+-pgsql_libdirs="$ac_pgsql_dir/lib /usr/lib /usr/local/lib"
+-AC_FIND_FILE(libpq.a, $pgsql_libdirs, pgsql_libdir)
+-if test ! -r $pgsql_libdir/libpq.a; then
+-  AC_MSG_ERROR(libpq.a not found.  May need to use --with-pgsqldir option)
+-fi                                                                              
++AC_CHECK_LIB(pq, main, [PG_LIBS="-lpq"])
+ 
+-dnl PG_LIB_DIR is needed by the script that installs PL/PGSQL
+-PG_LIB_DIR="$pgsql_libdir"
+-PG_LIBS="-L$pgsql_libdir -lpq -lcrypt"
+-
+-AC_MSG_RESULT([headers $pgsql_incdir, libraries $pgsql_libdir]) 
+-
+-AC_SUBST(PG_LIB_DIR)
+ AC_SUBST(PG_CFLAGS)
+ AC_SUBST(PG_LIBS)
+ 
+ dnl Check for sendmail
