@@ -22,8 +22,6 @@ Requires:	tetex
 Requires:	tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 PRepS is a simple Problem Reporting System. PRepS is designed around
