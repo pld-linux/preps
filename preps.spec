@@ -53,9 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc %{_datadir}/%{name}/doc/*
 %doc {AUTHORS,ChangeLog,INSTALL,NEWS,README,TODO}.gz
-%{_datadir}/%{name}/*.sql
-%{_datadir}/%{name}/*.xpm
-%{_datadir}/%{name}/*.msg
-%{_mandir}/man1/*.gz
 %attr(755,root,root) %{_libdir}/*
 %attr(755,root,root) %{_bindir}/*
+%{_datadir}/%{name}
+%{_mandir}/man1/*
