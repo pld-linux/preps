@@ -15,6 +15,8 @@ Patch2:		%{name}-with_shared_libpq.patch
 Patch3:		%{name}-macros.patch
 Patch4:		%{name}-shell.patch
 Patch5:		%{name}-plpgsql.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	postgresql-devel >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
 BuildRequires:  tetex
@@ -53,6 +55,7 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 %build
 aclocal -I macros
 autoconf
+automake -a -c
 %configure --with-pgsqldir=%{_libdir}/modules
 %{__make} 
 
