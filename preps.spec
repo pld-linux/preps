@@ -2,7 +2,7 @@ Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.8.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Development/Tools
 Source0:	http://webpages.charter.net/stuffle/linux/%{name}/%{name}-%{version}.tar.gz
@@ -61,8 +61,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	Applicationsdir=%{_applnkdir}/Development
 
-gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO
-
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -70,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog INSTALL NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/preps
 %{_mandir}/man1/*
