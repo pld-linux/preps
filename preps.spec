@@ -1,7 +1,7 @@
 Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
-Version:	1.4.1beta
+Version:	1.4.1
 Release:	1
 Copyright:	Artistic
 Group:		Development/Tools
@@ -31,7 +31,7 @@ wymagaj±cych kontroli postepu prac. Mo¿e byæ na przyk³ad u¿yty w domu
 do nadzoru rzeczy wymagaj±cych naprawy.
 
 %prep
-%setup -q -n %{name}-1.4.1
+%setup -q
 %patch1 -p1
 %patch2 -p1
 
