@@ -1,12 +1,14 @@
 Summary:	PRepS is a simple Problem Reporting System
-Summary(pl): PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
+Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.2.4
-Release:	1
+Release:	2
 Copyright:	Artistic
 Group:		Development/Tools
-Source:		http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz 
-Patch:		%{name}-DESTDIR.patch
+Group(fr):	Development/Outils
+Group(pl):	Programowanie/Narzêdzia
+Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
+Patch0:		%{name}-DESTDIR.patch
 BuildRequires:	postgresql-static >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
 Requires:	gtk+ >= 1.2
@@ -14,18 +16,18 @@ Requires:	postgresql >= 6.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-PRepS is a simple Problem Reporting System.  PRepS is designed around the
-bug tracking needs of small to medium sized software projects.  However, 
+PRepS is a simple Problem Reporting System. PRepS is designed around the
+bug tracking needs of small to medium sized software projects. However,
 PRepS may be flexible enough to be used for other types of problem or
-status tracking.  For example, PRepS could be setup to track things 
-that need fixing around the house.  Be creative.
+status tracking. For example, PRepS could be setup to track things that
+need fixing around the house. Be creative.
 
 %description -l pl
-PRepS to s³u¿y do kontroli i zarz±dzania b³êdami. PRepS zosta³
-zaprojektowany do ma³ych i ¶rednich projektów. Mimo to jest na tyle
-elestyczny, ¿e mo¿e byæ u¿ywany przy innych rodzajach problemów
-wymagaj±cych kontroli postêpów. Mo¿e byæ na przyk³ad u¿yty w domu
-do nadzoru rzeczy wymagaj±cych naprawy. 
+PRepS s³u¿y do kontroli i zarz±dzania b³êdami. PRepS zosta³ zaprojektowany
+do ma³ych i ¶rednich projektów. Mimo to jest na tyle elestyczny, ¿e mo¿e
+byæ u¿ywany przy innych rodzajach problemów wymagaj±cych kontroli postepu
+prac. Mo¿e byæ na przyk³ad u¿yty w domu do nadzoru rzeczy wymagaj±cych
+naprawy.
 
 %prep
 %setup -q
