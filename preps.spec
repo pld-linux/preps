@@ -16,6 +16,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel >= 7.2
 # to get paths
 BuildRequires:	tetex
