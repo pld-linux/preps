@@ -52,7 +52,7 @@ aclocal -I %{_aclocaldir}/gnome
 autoconf
 automake -a -c
 %configure
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -70,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz 
+%doc *.gz
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/preps
 %{_mandir}/man1/*
