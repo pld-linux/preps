@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	Applicationsdir=%{_applnkdir}/Development
 
-gzip -9nf AUTHORS ChangeLog COPYING INSTALL NEWS README TODO
+gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO
 
 %find_lang %{name} --with-gnome --all-name
 
