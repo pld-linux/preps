@@ -1,0 +1,11 @@
+diff -Nru preps-1.2.4.orig/src/login_dlg.c preps-1.2.4/src/login_dlg.c
+--- preps-1.2.4.orig/src/login_dlg.c	Sat May  6 19:42:01 2000
++++ preps-1.2.4/src/login_dlg.c	Sat May  6 19:42:17 2000
+@@ -432,6 +432,7 @@
+    gtk_table_attach (GTK_TABLE (table1), password_entry, 1, 2, 2, 3,
+                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                      (GtkAttachOptions) (0), 0, 0);
++   gtk_entry_set_visibility(GTK_ENTRY (password_entry), FALSE);
+ 
+    host_entry = gtk_entry_new ();
+    gtk_widget_ref (host_entry);
