@@ -2,13 +2,14 @@ Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.9.6
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Development/Tools
 Source0:	http://webpages.charter.net/stuffle/linux/preps/%{name}-%{version}.tar.gz
 # Source0-md5:	a09990786e183ed83695037a029cad54
 Patch0:		%{name}-with_shared_libpq.patch
 Patch1:		%{name}-gtk24.patch
+Patch2:		%{name}-desktop.patch
 URL:		http://webpages.charter.net/stuffle/linux/preps/preps.html
 BuildRequires:	GConf2-devel >= 2.0
 BuildRequires:	autoconf >= 2.54
@@ -45,8 +46,7 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-
-echo 'Categories=Development;' >> PRepS.desktop
+%patch2 -p1
 
 %build
 %{__libtoolize}
