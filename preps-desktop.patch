@@ -1,0 +1,35 @@
+--- preps-1.9.6/PRepS.desktop~	Sat Jul 17 01:12:28 2004
++++ preps-1.9.6/PRepS.desktop	Sat Jul 17 01:49:40 2004
+@@ -1,9 +1,12 @@
+-
+ [Desktop Entry]
+ Name=Problem Logs
++Name[pl]=Rejestry problemów
+ Comment=Manage problem logs for your projects
++Comment[pl]=Zarządzanie rejestrami problemów dla projektów
+ Exec=preps -l
+ Icon=preps.png
+-Terminal=0
++Terminal=false
+ Type=Application
+-Categories=Development;
++Categories=GTK;GNOME;Development;
++Encoding=UTF-8
++# vi: encoding=utf-8
+--- preps-1.9.6/PRepS.desktop.orig	Sat Jul 17 01:12:28 2004
++++ preps-1.9.6/PRepS.desktop	Sat Jul 17 01:49:40 2004
+@@ -1,8 +1,12 @@
+-
+ [Desktop Entry]
+ Name=Problem Logs
++Name[pl]=Rejestry problemów
+ Comment=Manage problem logs for your projects
++Comment[pl]=Zarządzanie rejestrami problemów dla projektów
+ Exec=preps -l
+ Icon=preps.png
+-Terminal=0
++Terminal=false
+ Type=Application
++Categories=GTK;GNOME;Development;
++Encoding=UTF-8
++# vi: encoding=utf-8
