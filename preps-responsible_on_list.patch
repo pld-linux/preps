@@ -1,0 +1,83 @@
+diff -ru preps-1.2.4.orig/src/mainwin.c preps-1.2.4/src/mainwin.c
+--- preps-1.2.4.orig/src/mainwin.c	Tue Mar  7 01:22:43 2000
++++ preps-1.2.4/src/mainwin.c	Sat May  6 20:39:07 2000
+@@ -110,13 +110,14 @@
+ /*
+  * PR info display data
+  */
+-#define NUM_PR_FIELDS_DSP          6
++#define NUM_PR_FIELDS_DSP          7
+ #define PR_NUM_DSP_POS             0
+ #define PROJECT_NAME_DSP_POS       1
+ #define STATUS_NAME_DSP_POS        2
+ #define PROBLEM_TYPE_NAME_DSP_POS  3
+ #define SEVERITY_NAME_DSP_POS      4
+-#define PR_TITLE_DSP_POS           5
++#define PR_RESPONSIBLE_ID_DSP_POS  5
++#define PR_TITLE_DSP_POS           6
+ 
+ 
+ /*
+@@ -297,6 +298,10 @@
+                (strlen (PQgetvalue (res, i, PR_NUMBER_POS)) + 1);
+             strcpy (list_buf [PR_NUM_DSP_POS],
+                     PQgetvalue (res, i, PR_NUMBER_POS));
++            list_buf [PR_RESPONSIBLE_ID_DSP_POS] = (gchar *)g_malloc
++               (strlen (PQgetvalue (res, i, PR_RESPONSIBLE_POS)) + 1);
++            strcpy (list_buf [PR_RESPONSIBLE_ID_DSP_POS],
++                    PQgetvalue (res, i, PR_RESPONSIBLE_POS));
+ 
+             /*
+              * Append the data to the list, and clean up the
+@@ -1080,6 +1085,7 @@
+   GtkWidget        *type_lbl;
+   GtkWidget        *severity_lbl;
+   GtkWidget        *title_lbl;
++  GtkWidget        *responsible_lbl;
+   GtkWidget        *new_pr_button;
+   GtkWidget        *mod_pr_button;
+   GtkWidget        *find_pr_button;
+@@ -1553,6 +1559,8 @@
+   gtk_clist_set_column_width (GTK_CLIST (results_clist), 
+                               SEVERITY_NAME_DSP_POS, 80);
+   gtk_clist_set_column_width (GTK_CLIST (results_clist), 
++                              PR_RESPONSIBLE_ID_DSP_POS, 80);
++  gtk_clist_set_column_width (GTK_CLIST (results_clist), 
+                               PR_TITLE_DSP_POS, 80);
+   gtk_clist_column_titles_show (GTK_CLIST (results_clist));
+   gtk_signal_connect (GTK_OBJECT (results_clist), "select_row",
+@@ -1588,6 +1596,11 @@
+   gtk_widget_show (title_lbl);
+   gtk_clist_set_column_widget (GTK_CLIST (results_clist), 
+                                PR_TITLE_DSP_POS, title_lbl);
++
++  responsible_lbl = gtk_label_new ("Responsible");
++  gtk_widget_show (responsible_lbl);
++  gtk_clist_set_column_widget (GTK_CLIST (results_clist), 
++                               PR_RESPONSIBLE_ID_DSP_POS, responsible_lbl);
+ 
+   statusbar = gtk_statusbar_new ();
+   gtk_object_set_data (GTK_OBJECT (main_win), STATUSBAR, statusbar);
+diff -ru preps-1.2.4.orig/src/pr_query.c preps-1.2.4/src/pr_query.c
+--- preps-1.2.4.orig/src/pr_query.c	Mon Nov  8 00:43:51 1999
++++ preps-1.2.4/src/pr_query.c	Sat May  6 20:19:18 2000
+@@ -27,7 +27,7 @@
+ #define BASIC_SELECT "\
+ SELECT prj.name, stat.name, pt.name, sevr.name, \
+        pr.title, stat.order_num, sevr.order_num, \
+-       pr.problem_num \
++       pr.problem_num, pr.responsible_id \
+   FROM project prj, status stat, problem_type pt, \
+        severity sevr, problem_report pr \
+  WHERE prj.project_num = pr.project_num \
+diff -ru preps-1.2.4.orig/src/pr_query.h preps-1.2.4/src/pr_query.h
+--- preps-1.2.4.orig/src/pr_query.h	Fri Sep  3 14:13:29 1999
++++ preps-1.2.4/src/pr_query.h	Sat May  6 20:23:45 2000
+@@ -35,6 +35,7 @@
+ #define STATUS_ORDER_POS        5
+ #define SEVERITY_ORDER_POS      6
+ #define PR_NUMBER_POS           7
++#define PR_RESPONSIBLE_POS      8
+ 
+ /*
+  *  pr_query_struct
