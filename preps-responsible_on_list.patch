@@ -23,7 +23,7 @@ diff -Naur preps-1.4.5/preps/mainwin.c preps-1.4.5-p/preps/mainwin.c
           strcpy (list_buf [PROJECT_NAME_DSP_POS],
                   PQgetvalue (res, i, PROJECT_NAME_POS));
 +         list_buf [PR_RESPONSIBLE_ID_DSP_POS] = (gchar *)g_malloc
-+            (strlen (PQgetbalue (res, i, PR_RESPONSIBLE_POS)) + 1);
++            (strlen (PQgetvalue (res, i, PR_RESPONSIBLE_POS)) + 1);
 +	 strcpy (list_buf [PR_RESPONSIBLE_ID_DSP_POS],
 +                 PQgetvalue (res, i, PR_RESPONSIBLE_POS));
           list_buf [STATUS_NAME_DSP_POS] = (gchar *)g_malloc
