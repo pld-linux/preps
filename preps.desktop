@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PRepS
+Comment=Simple problem reporting system
+Exec=think
+Icon=/usr/share/preps/LadyBug.xpm
+Terminal=0
+Type=Applications
