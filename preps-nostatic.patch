@@ -1,0 +1,15 @@
+--- preps-1.6.3/configure.in.orig	Sun Jan 27 21:20:49 2002
++++ preps-1.6.3/configure.in	Sun Jan 27 21:21:08 2002
+@@ -80,9 +80,9 @@
+ PREPS_CFLAGS="-I$libpreps_incdir"
+ 
+ libpreps_libdirs="$ac_libpreps_dir/lib /usr/lib /usr/local/lib /opt/preps/lib"
+-AC_FIND_FILE(libpreps.a, $libpreps_libdirs, libpreps_libdir)
+-if test ! -r $libpreps_libdir/libpreps.a; then
+-  AC_MSG_ERROR(libpreps.a not found.  May need to use --with-libprepsdir option)
++AC_FIND_FILE(libpreps.so, $libpreps_libdirs, libpreps_libdir)
++if test ! -r $libpreps_libdir/libpreps.so; then
++  AC_MSG_ERROR(libpreps.so not found.  May need to use --with-libprepsdir option)
+ fi                                                                              
+ PREPS_LIBS="-L$libpreps_libdir -rdynamic -lpreps"
+ 
