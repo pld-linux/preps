@@ -5,6 +5,7 @@ Version:	1.4.5
 Release:	1
 Copyright:	Artistic
 Group:		Development/Tools
+Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
@@ -12,7 +13,6 @@ Patch1:		%{name}-login_pwd_entry.patch
 Patch2:		%{name}-responsible_on_list.patch
 BuildRequires:	postgresql-static >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
-Requires:	gtk+ >= 1.2
 Requires:	tetex
 Requires:	tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -44,16 +44,14 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 rm -rf $RPM_BUILD_ROOT
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO \
-	$RPM_BUILD_ROOT/%{_mandir}/man1/*
+gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.html
-%doc {AUTHORS,ChangeLog,INSTALL,NEWS,README,TODO}.gz
+%doc *.gz doc/*.html
 %attr(755,root,root) %{_libdir}/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}/*.sql
