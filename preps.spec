@@ -46,7 +46,7 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 
 %build
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 gettextize --copy --force
 aclocal -I %{_aclocaldir}/gnome
 %{__autoconf}
