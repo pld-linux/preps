@@ -3,15 +3,17 @@ Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.4.5
 Release:	1
-Copyright:	Artistic
+License:	Artistic
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
-Patch1:		%{name}-login_pwd_entry.patch
-Patch2:		%{name}-responsible_on_list.patch
-BuildRequires:	postgresql-static >= 6.5
+Patch0:		%{name}-login_pwd_entry.patch
+Patch1:		%{name}-responsible_on_list.patch
+Patch2:		%{name}-with_shared_libpq.patch
+Patch3:		preps-macros.patch
+BuildRequires:	postgresql-devel >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
 Requires:	tetex
 Requires:	tetex-dvips
@@ -33,15 +35,20 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
+aclocal -I macros
+autoconf
 %configure
 %{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
 gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO
