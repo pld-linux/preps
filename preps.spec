@@ -12,6 +12,7 @@ Patch2:		%{name}-DESTDIR.patch
 URL:		http://webpages.charter.net/stuffle/linux/preps/preps.html
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libpreps-devel >= 1.6.5
 BuildRequires:	libtool
@@ -48,7 +49,7 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 rm -f missing
 %{__libtoolize}
 %{__gettextize}
-aclocal -I %{_aclocaldir}/gnome
+%{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
 %configure
