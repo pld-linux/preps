@@ -2,7 +2,7 @@ Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.2.4
-Release:	3
+Release:	4
 Copyright:	Artistic
 Group:		Development/Tools
 Group(fr):	Development/Outils
@@ -10,6 +10,7 @@ Group(pl):	Programowanie/Narzêdzia
 Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-login_pwd_entry.patch
+Patch2:		%{name}-responsible_on_list.patch
 BuildRequires:	postgresql-static >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
 Requires:	gtk+ >= 1.2
@@ -34,6 +35,7 @@ naprawy.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 automake -v
