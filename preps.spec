@@ -1,7 +1,7 @@
 Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
-Version:	1.4.1
+Version:	1.4.2
 Release:	1
 Copyright:	Artistic
 Group:		Development/Tools
@@ -15,7 +15,7 @@ BuildRequires:	gtk+-devel >= 1.2
 Requires:	gtk+ >= 1.2
 Requires:	postgresql >= 6.5
 Requires:	tetex
-Requires:	dvips
+Requires:	tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
