@@ -1,88 +1,17 @@
-diff -ur preps-1.6.3.orig/doc/C/Makefile.am preps-1.6.3/doc/C/Makefile.am
---- preps-1.6.3.orig/doc/C/Makefile.am	Fri Feb 23 15:12:38 2001
-+++ preps-1.6.3/doc/C/Makefile.am	Mon Jan 28 00:59:55 2002
-@@ -28,7 +28,7 @@
- SUBDIRS = images
+--- preps-1.8.0/doc/C/Makefile.am.orig	Sat Jul 21 05:43:28 2001
++++ preps-1.8.0/doc/C/Makefile.am	Wed Feb  6 07:45:35 2002
+@@ -65,11 +65,12 @@
  
- ## target dir
--preps_helpdir = $(DESTDIR)$(pkgdatadir)/doc
-+preps_helpdir = $(pkgdatadir)/doc
- 
- ## the source files
- MANUAL_SRC = preps-manual.sgml
-@@ -54,14 +54,14 @@
- 
- ## install it all from the preps-FAQ docbook build dir.
- install-data-local: preps-manual/manual.html
--	$(mkinstalldirs) $(preps_helpdir)/preps-manual/
-+	$(mkinstalldirs) $(DESTDIR)$(preps_helpdir)/preps-manual/
- 	-for file in $(srcdir)/preps-manual/*.html $(srcdir)/preps-manual/*.css; do \
+ ## install it all from the preps-manual docbook build dir.
+ install-data-local: manuals.html
++	$(mkinstalldirs) $(DESTDIR)$(preps_helpdir)
+ 	-for file in $(srcdir)/manuals/*.html $(srcdir)/manuals/*.css; do \
  	  basefile=`basename $$file`; \
  	  echo $$file; \
  	  echo $$basefile; \
--	  $(INSTALL_DATA) $$file $(preps_helpdir)/preps-manual/$$basefile; \
-+	  $(INSTALL_DATA) $$file $(DESTDIR)$(preps_helpdir)/preps-manual/$$basefile; \
+-	  $(INSTALL_DATA) $$file $(preps_helpdir)/$$basefile; \
++	  $(INSTALL_DATA) $$file $(DESTDIR)$(preps_helpdir)/$$basefile; \
  	done
  
- uninstall-local:
--	-rm -f $(preps_helpdir)/preps-manual/*.html
--	-rm -f $(preps_helpdir)/preps-manual/*.css
-+	-rm -f $(DESTDIR)$(preps_helpdir)/preps-manual/*.html
-+	-rm -f $(DESTDIR)$(preps_helpdir)/preps-manual/*.css
-diff -ur preps-1.6.3.orig/doc/C/Makefile.in preps-1.6.3/doc/C/Makefile.in
---- preps-1.6.3.orig/doc/C/Makefile.in	Mon Aug 27 00:05:11 2001
-+++ preps-1.6.3/doc/C/Makefile.in	Mon Jan 28 01:01:58 2002
-@@ -95,7 +95,7 @@
- 
- SUBDIRS = images
- 
--preps_helpdir = $(DESTDIR)$(pkgdatadir)/doc
-+preps_helpdir = $(pkgdatadir)/doc
- 
- MANUAL_SRC = preps-manual.sgml
- SGML_FILES = $(MANUAL_SRC)
-@@ -318,17 +318,17 @@
- 	-cp preps-manual/*.html preps-manual/*.css $(distdir)/preps-manual
- 
- install-data-local: preps-manual/manual.html
--	$(mkinstalldirs) $(preps_helpdir)/preps-manual/
-+	$(mkinstalldirs) $(DESTDIR)$(preps_helpdir)/preps-manual/
- 	-for file in $(srcdir)/preps-manual/*.html $(srcdir)/preps-manual/*.css; do \
- 	  basefile=`basename $$file`; \
- 	  echo $$file; \
- 	  echo $$basefile; \
--	  $(INSTALL_DATA) $$file $(preps_helpdir)/preps-manual/$$basefile; \
-+	  $(INSTALL_DATA) $$file $(DESTDIR)$(preps_helpdir)/preps-manual/$$basefile; \
- 	done
- 
- uninstall-local:
--	-rm -f $(preps_helpdir)/preps-manual/*.html
--	-rm -f $(preps_helpdir)/preps-manual/*.css
-+	-rm -f $(DESTDIR)$(preps_helpdir)/preps-manual/*.html
-+	-rm -f $(DESTDIR)$(preps_helpdir)/preps-manual/*.css
- 
- # Tell versions [3.59,3.63) of GNU make to not export all variables.
- # Otherwise a system limit (for SysV at least) may be exceeded.
-diff -ur preps-1.6.3.orig/doc/C/images/Makefile.am preps-1.6.3/doc/C/images/Makefile.am
---- preps-1.6.3.orig/doc/C/images/Makefile.am	Fri Feb 23 15:15:10 2001
-+++ preps-1.6.3/doc/C/images/Makefile.am	Mon Jan 28 00:59:55 2002
-@@ -40,6 +40,6 @@
- 	statedit.gif \
- 	useredit.gif
- 
--imagesdir = $(DESTDIR)$(pkgdatadir)/doc/images
-+imagesdir = $(pkgdatadir)/doc/images
- 
- images_DATA = $(EXTRA_DIST)
-diff -ur preps-1.6.3.orig/doc/C/images/Makefile.in preps-1.6.3/doc/C/images/Makefile.in
---- preps-1.6.3.orig/doc/C/images/Makefile.in	Mon Jan 28 00:49:01 2002
-+++ preps-1.6.3/doc/C/images/Makefile.in	Mon Jan 28 01:01:58 2002
-@@ -96,7 +96,7 @@
- EXTRA_DIST = attriblist.gif 	editpr.gif 	findpr.gif 	login.gif 	mainwin.gif 	newpr.gif 	printdlg.gif 	prjedit.gif 	prjvers.gif 	prquery.gif 	ptedit.gif 	rawsql.gif 	sevredit.gif 	statedit.gif 	useredit.gif
- 
- 
--imagesdir = $(DESTDIR)$(pkgdatadir)/doc/images
-+imagesdir = $(pkgdatadir)/doc/images
- 
- images_DATA = $(EXTRA_DIST)
- mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+ ## a couple other targets, just in case someone wants some other type of
+y

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=PRepS
-Comment=Simple problem reporting system
-Comment[pl]=System zgłaszania prostych problemów
-Exec=preps
-Icon=/usr/share/preps/LadyBug.xpm
-Terminal=0
-Type=Applications
-# vi: encoding=utf-8
