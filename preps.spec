@@ -15,8 +15,13 @@ Patch2:		%{name}-with_shared_libpq.patch
 Patch3:		preps-macros.patch
 BuildRequires:	postgresql-devel >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
-Requires:	tetex
-Requires:	tetex-dvips
+BuildRequires:  tetex
+BuildRequires:  tetex-dvips
+BuildRequires:  glib-devel
+BuildRequires:  gtk+-devel
+BuildRequires:  XFree86-devel
+Requires:       tetex
+Requires:       tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
