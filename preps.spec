@@ -1,18 +1,18 @@
 Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
-Version:	1.4.5
-Release:	2
-License:	Artistic
+Version:	1.7.0
+Release:	1
+License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
-Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
-Patch0:		%{name}-login_pwd_entry.patch
-Patch1:		%{name}-responsible_on_list.patch
+Source0:	http://www.execpc.com/~stuffle/linux/%{name}/%{name}-%{version}.tar.gz
+# Patch0:		%{name}-login_pwd_entry.patch
+# Patch1:		%{name}-responsible_on_list.patch
 Patch2:		%{name}-with_shared_libpq.patch
-Patch3:		%{name}-macros.patch
+# Patch3:		%{name}-macros.patch
 Patch4:		%{name}-shell.patch
 Patch5:		%{name}-plpgsql.patch
 BuildRequires:	autoconf
@@ -45,10 +45,10 @@ do nadzoru rzeczy wymagaj±cych naprawy.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+# %patch0 -p1
+# %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+# %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 
