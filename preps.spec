@@ -23,14 +23,14 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	postgresql-devel >= 6.5
 BuildRequires:	gtk+-devel >= 1.2
-BuildRequires:  tetex
-BuildRequires:  tetex-dvips
-BuildRequires:  glib-devel
+BuildRequires:	tetex
+BuildRequires:	tetex-dvips
+BuildRequires:	glib-devel
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libpreps-devel
-Requires:       postgresql-module-plpgsql
-Requires:       tetex
-Requires:       tetex-dvips
+Requires:	postgresql-module-plpgsql
+Requires:	tetex
+Requires:	tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
