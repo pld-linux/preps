@@ -8,6 +8,7 @@ Group:		Development/Tools
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	http://www.execpc.com/~stuffle/linux/%{name}-%{version}.tar.gz
+Source1:	preps.desktop
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-login_pwd_entry.patch
 Patch2:		%{name}-responsible_on_list.patch
@@ -46,6 +47,9 @@ make
 rm -rf $RPM_BUILD_ROOT
 make DESTDIR=$RPM_BUILD_ROOT install
 
+install -d $RPM_BUILD_ROOT/%{_applnkdir}/Applications
+install %{SOURCE1} $RPM_BUILD_ROOT/%{_applnkdir}/Applications
+
 gzip -9nf AUTHORS ChangeLog COPYING INSTALL NEWS README TODO \
 	doc/*html $RPM_BUILD_ROOT/%{_mandir}/man1/*
 
@@ -58,5 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*.html.gz
 %{_mandir}/man1/*.gz
 %{_datadir}/%{name}
+%{_applnkdir}/Applications/preps.desktop
 # %attr(755,root,root) %{_libdir}/*
 %attr(755,root,root) %{_bindir}/*
