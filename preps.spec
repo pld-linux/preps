@@ -5,11 +5,6 @@ Version:	1.8.0
 Release:	1
 License:	GPL
 Group:		X11/Development/Tools
-Group(de):	X11/Entwicklung/Werkzeuge
-Group(es):	X11/Desarrollo/Herramientas
-Group(fr):	X11/Development/Outils
-Group(pl):	X11/Programowanie/Narzêdzia
-Group(pt):	X11/Desenvolvimento/Ferramentas
 Source0:	http://webpages.charter.net/stuffle/linux/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-nostatic.patch
 Patch1:		%{name}-with_shared_libpq.patch
