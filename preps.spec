@@ -2,7 +2,7 @@ Summary:	PRepS is a simple Problem Reporting System
 Summary(pl):	PRepS to uproszczony system do kontroli i zarz±dzania b³êdami
 Name:		preps
 Version:	1.9.6
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Development/Tools
 Source0:	http://webpages.charter.net/stuffle/linux/preps/%{name}-%{version}.tar.gz
@@ -19,11 +19,12 @@ BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel >= 7.2
+BuildRequires:	rpmbuild(macros) >= 1.197
 # to get paths
 BuildRequires:	tetex
 BuildRequires:	tetex-dvips
-Requires(post):	GConf2
-Requires(post):	scrollkeeper
+Requires(post,preun):	GConf2
+Requires(post,postun):	scrollkeeper
 Requires:	tetex
 Requires:	tetex-dvips
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -71,10 +72,14 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-scrollkeeper-update
-%gconf_schema_install
+%scrollkeeper_update_post
+%gconf_schema_install preps.schema
 
-%postun	-p /usr/bin/scrollkeeper-update
+%preun
+%gconf_schema_uninstall preps.schema
+
+%postun
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
