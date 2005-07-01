@@ -16,10 +16,12 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libgnomeui-devel >= 2.0
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel >= 7.2
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
 # to get paths
 BuildRequires:	tetex
 BuildRequires:	tetex-dvips
