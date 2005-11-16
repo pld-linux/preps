@@ -5,12 +5,12 @@ Version:	1.9.6
 Release:	3
 License:	GPL
 Group:		X11/Development/Tools
-Source0:	http://webpages.charter.net/stuffle/linux/preps/%{name}-%{version}.tar.gz
+Source0:	http://webpages.charter.net/stuffle/preps/download/files/%{name}-%{version}.tar.gz
 # Source0-md5:	a09990786e183ed83695037a029cad54
 Patch0:		%{name}-with_shared_libpq.patch
 Patch1:		%{name}-gtk24.patch
 Patch2:		%{name}-desktop.patch
-URL:		http://webpages.charter.net/stuffle/linux/preps/preps.html
+URL:		http://webpages.charter.net/stuffle/preps/preps.html
 BuildRequires:	GConf2-devel >= 2.0
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
