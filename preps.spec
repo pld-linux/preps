@@ -1,5 +1,5 @@
 Summary:	PRepS is a simple Problem Reporting System
-Summary(pl.UTF-8):   PRepS to uproszczony system do kontroli i zarządzania błędami
+Summary(pl.UTF-8):	PRepS to uproszczony system do kontroli i zarządzania błędami
 Name:		preps
 Version:	1.9.6
 Release:	3
