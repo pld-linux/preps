@@ -14,7 +14,7 @@ URL:		http://webpages.charter.net/stuffle/preps/preps.html
 BuildRequires:	GConf2-devel >= 2.0
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
